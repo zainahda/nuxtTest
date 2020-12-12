@@ -8,35 +8,33 @@
         img-top
         tag="article"
         style="max-width: 20rem"
-        height="200px"
-        class="mb-2"
+        height="150px"
+        class="mb-2 "
       >
         <div class="container"></div>
         <div class="bottom-right">
-          <p>
-            Rating
-            <svg
-              width="12px"
-              height="12px"
-              viewBox="0 0 16 16"
-              class="bi bi-star-fill"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
-              />
-            </svg>
-            {{ all.ratings }}
-          </p>
+          <b-form-rating
+            inline
+            :value="all.ratings"
+            readonly
+            show-value
+            precision="1"
+            variant="warning"
+          ></b-form-rating>
         </div>
 
         <b-card-text>
           {{ all.address }}
         </b-card-text>
+        <div v-b-hover="handleHover" class="border rounded py-3 px-4">
+          <b-icon v-if="isHovered" icon="battery-full" scale="100"></b-icon>
+          <b-icon v-else icon="battery" scale="2"></b-icon>
+          <span class="ml-2" :class="isHovered ? 'text-danger' : ''"
+            >Termasuk dalam <br />zona <span>Orange</span> covid-19</span
+          >
+        </div>
         <div class="overlay">
           <div class="text">
-            Termasuk dalam <br />zona <span>Orange</span> covid-19
             <p>Patuhilah protokol kesehatan</p>
           </div>
           <b-button class="explore" href="/explore">Explore Now</b-button>
@@ -48,32 +46,37 @@
 
 <script>
 export default {
+  data() {
+      return {
+        isHovered: false
+      }
+    },
+    methods: {
+      handleHover(hovered) {
+        this.isHovered = hovered
+      }
+    },
   props: {
     all: {
       type: Object,
       default: () => {},
     },
   },
-  // props: {
-  //   popular: {
-  //     type: Object,
-  //     default: () => {}
-  //   }
-  // }
 };
 </script>
 
 <style scoped>
 .bottom-right {
   position: absolute;
-  bottom: 8px;
-  right: 16px;
+  right: 5px;
+  top: 180px;
+  border-radius: 10px;
 }
 .bottom-right p {
   font-size: 20px;
 }
 .bottom-right svg {
-  color: #FFD700;
+  color: #ffd700;
 }
 
 .explore {

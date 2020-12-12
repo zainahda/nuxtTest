@@ -2,6 +2,9 @@
   <div>
     <Navbar />
     <Landing />
+    <!-- populars star -->
+    <Populars/>
+    <!-- populars end -->
     <!-- destination card start -->
     <div class="container">
       <div class="header">
@@ -10,7 +13,7 @@
       <div class="row mb-4">
         <div
           class="col-md3 mt-4 ml-3 mr-4"
-          v-for="all in all.results"
+          v-for="all in all.results.slice(0, 12)"
           :key="all.id"
           
         >
