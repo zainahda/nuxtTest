@@ -23,7 +23,7 @@ export default {};
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 .jumbotron {
-  background-image: url(../assets/bali.jpg);
+  background-image: url(../assets/bg3.jpg);
   background-size: cover;
   height: 682px;
   text-align: center;

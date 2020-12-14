@@ -1,61 +1,21 @@
 <template>
   <div>
     <div class="card-group">
-      <b-card
-        :title="all.name"
-        :img-src="all.image"
-        :img-alt="all.name"
-        img-top
-        tag="article"
-        style="max-width: 20rem"
-        height="150px"
-        class="mb-2 "
-      >
-        <div class="container"></div>
-        <div class="bottom-right">
-          <b-form-rating
-            inline
-            :value="all.ratings"
-            readonly
-            show-value
-            precision="1"
-            variant="warning"
-          ></b-form-rating>
-        </div>
-
-        <b-card-text>
-          {{ all.address }}
-        </b-card-text>
-        <div v-b-hover="handleHover" class="border rounded py-3 px-4">
-          <b-icon v-if="isHovered" icon="battery-full" scale="100"></b-icon>
-          <b-icon v-else icon="battery" scale="2"></b-icon>
-          <span class="ml-2" :class="isHovered ? 'text-danger' : ''"
-            >Termasuk dalam <br />zona <span>Orange</span> covid-19</span
-          >
-        </div>
-        <div class="overlay">
-          <div class="text">
-            <p>Patuhilah protokol kesehatan</p>
-          </div>
-          <b-button class="explore" href="/explore">Explore Now</b-button>
-        </div>
-      </b-card>
+    <b-card
+    overlay
+    :img-src="all.image"
+    :img-alt="all.title"
+    text-variant="info"
+    :title="all.name"
+    :sub-title="all.address"
+  >
+  </b-card>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-      return {
-        isHovered: false
-      }
-    },
-    methods: {
-      handleHover(hovered) {
-        this.isHovered = hovered
-      }
-    },
   props: {
     all: {
       type: Object,
